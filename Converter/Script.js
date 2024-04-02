@@ -16,7 +16,7 @@ try {
 			if (files === null) throw new ReferenceError(`Unable to find files list`);
 			for (const file of files) {
 				const text = await file.text();
-				const sheet = TranslationSheet.parse(text.trim().replace(/["']/, substring => `\\${substring}`));
+				const sheet = TranslationSheet.parse(text.trim());
 				const XML = sheet.toXML();
 				navigator.download(new File([XML], `${file.name.replace(/\..+$/, ``)}.xml`));
 			}
