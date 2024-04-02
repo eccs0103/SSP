@@ -73,7 +73,7 @@ class TranslationSheet {
 	 * @returns {string}
 	 */
 	toXML() {
-		return this.#lines.map(line => line.toXML()).join(`\n\n`);
+		return `<resources>\n${this.#lines.map(line => line.toXML().replace(/\<string/g, substring => `\t${substring}`)).join(`\n\n`)}\n</resources>`;
 	}
 	/** @type {TranslationLine[]} */
 	#lines = [];
