@@ -22,7 +22,7 @@ class TranslationLine {
 		const result = new TranslationLine();
 		result.#page = Number(page);
 		result.#index = Number(index);
-		result.#content = content.split(/\|/).map(part => part.replace(/["']/g, substring => `/${substring}`));
+		result.#content = content.split(/\|/).map(part => part.replace(/["']/g, substring => `\\${substring}`));
 		if (result.#content.length < 3) throw new SyntaxError(`Invalid line syntax`);
 		return result;
 	}
